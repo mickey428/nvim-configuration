@@ -37,15 +37,19 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             -- get access to the lspconfig plugins functions
-            local lspconfig = require("lspconfig")
+            --local lspconfig = require("lspconfig")
+            vim.lsp.config("lua_ls", {})
+            vim.lsp.config("ts_ls", {})
 
             --local capabilities = require("cmp-nvim-lsp").default_capabilities()
 
             -- setup the lua language server
-            lspconfig.lua_ls.setup({})
+            --lspconfig.lua_ls.setup({})
 
             -- setup the typescript language server
-            lspconfig.ts_ls.setup({})
+            --lspconfig.ts_ls.setup({})
+            vim.lsp.enable("lua_ls")
+            vim.lsp.enable("ts_ls")
 
             -- Set vim motion for <Space> + c + h to show code documentation about the code the cursor is currently over if available
             vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "[C]ode [H]over Documentation" })
